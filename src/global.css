@@ -1,0 +1,1119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0 auto;
+  overscroll-behavior-y: none;
+  overflow-x: hidden;
+}
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.TodoAppHeader {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  font-size: 44px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 0 8px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.TodoWrapper {
+  display: grid;
+  gap: calc(10px + 0.5vw);
+  margin-top: 22px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1100px;
+  width: 100;
+  max-height: calc(100vh - 140px);
+  height: 100%;
+  padding: 0 6px;
+
+  grid-template-columns: 1.3fr 2.6fr;
+  grid-template-rows: 12% 88%;
+  grid-template-areas:
+    "CurrentDate ListWrapper"
+    "SideBar ListWrapper";
+}
+
+.CurrentDate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.SideBar {
+  grid-area: SideBar;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 12px;
+  padding-top: 30px;
+  padding-bottom: 70px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.buttonShadow {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.FilterMenuBtn,
+.FilterMenu {
+  display: none;
+}
+
+.FilterTask {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* max-width: 210px;
+  width: 100%; */
+  row-gap: 34px;
+  margin: 0 auto;
+  padding: 0 4px;
+}
+
+.FilterAllContainer,
+.FilterTodayContainer,
+.FilterWeekContainer,
+.FilterMonthContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.FilterTask button.activenum {
+  transition-duration: 200ms;
+  border-radius: 8px;
+}
+
+.FilterTask button.inactivenum {
+  opacity: 0;
+  pointer-events: none;
+}
+
+button.AllFilter,
+button.TodayFilter,
+button.WeekFilter,
+button.MonthFilter {
+  font-size: 20px;
+  border-radius: 8px;
+  width: 140px;
+  height: 52px;
+  font-weight: 700;
+  margin-right: 24px;
+  flex-shrink: 0;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.AllFilterCount,
+.TodayFilterCount,
+.WeekFilterCount,
+.MonthFilterCount {
+  font-size: 22px;
+  border-radius: 8px;
+  font-weight: 700;
+  margin: 0 auto;
+}
+
+.SortTaskDates button,
+.SortTaskDates button.active {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.AddIcon {
+  width: 30px;
+}
+
+.EmptyPlusIconBtn {
+  display: none;
+}
+
+.AddTodoButton {
+  max-width: 110px;
+  width: 100%;
+  height: 48px;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: rgb(255, 1, 60);
+  color: white;
+  margin-left: auto;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.AddTodoButton:focus {
+  outline: none;
+}
+
+.AddIcon {
+  display: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ListWrapper {
+  grid-area: ListWrapper;
+  overflow-x: hidden;
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 12px;
+  padding: 24px 10px 22px 14px;
+  width: 100%;
+  height: 100%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.List {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+.List::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ListDarkScrollbar::-webkit-scrollbar-thumb {
+  background-color: rgb(140, 82, 255);
+  border-radius: 10px;
+}
+
+.ListLightScrollbar::-webkit-scrollbar-thumb {
+  background-color: rgb(59, 130, 246);
+  border-radius: 10px;
+}
+
+/* rgb(140,82,255) */
+
+.TodoForm {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.TodoForm input {
+  width: 100%;
+  height: 34px;
+  text-align: start;
+  padding: 0 10px;
+  margin: auto;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.TodoForm input:focus {
+  outline: none;
+}
+
+.AddTask {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 18px;
+  right: 0;
+  margin-right: 20px;
+  max-width: 65px;
+  width: 100%;
+  height: 65px;
+  font-size: 20px;
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  border-width: 3px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.LowBtn,
+.MediumBtn,
+.HighBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 82px;
+  width: 100%;
+  height: 32px;
+  font-size: 14px;
+  font-weight: 700;
+  margin: auto;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-width: 2px;
+  border-radius: 0.25rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.DatePickerContainer {
+  color: white;
+  letter-spacing: 1px;
+  font-size: 16px;
+}
+
+.SelectDateButton {
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+/* react-datepicker component styling */
+.react-datepicker {
+  font-size: calc(14px + 0.2vw);
+  color: black;
+  background-color: white;
+  border: none;
+  top: calc(0px - 4vh);
+}
+
+.dark .react-datepicker {
+  color: white;
+  background-color: rgb(55, 55, 55);
+}
+
+.react-datepicker:focus {
+  outline: none;
+}
+
+.react-datepicker select {
+  color: black;
+  background-color: rgb(222, 222, 222);
+  border: 0;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 5px;
+  font-size: calc(16px + 0.2vw);
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-align-last: center;
+  margin: 0 10px;
+}
+
+.react-datepicker select option {
+  background-color: white;
+}
+
+.dark .react-datepicker select {
+  color: white;
+  background-color: rgb(35, 35, 35);
+}
+
+.dark .react-datepicker select option {
+  background-color: rgb(35, 35, 35);
+}
+
+.react-datepicker select:focus {
+  outline: none;
+}
+
+.react-datepicker select::-webkit-scrollbar {
+  width: 4px;
+  background-color: white;
+}
+
+.dark .react-datepicker select::-webkit-scrollbar {
+  background-color: rgb(35, 35, 35);
+}
+
+.react-datepicker select::-webkit-scrollbar-thumb {
+  background-color: rgb(59, 130, 246);
+  border-radius: 8px;
+}
+
+.dark .react-datepicker select::-webkit-scrollbar-thumb {
+  background-color: rgb(164, 77, 240);
+}
+
+.react-datepicker__header {
+  border: 0;
+  background-color: rgb(222, 222, 222);
+}
+
+.dark .react-datepicker__header {
+  background-color: rgb(35, 35, 35);
+}
+
+.react-datepicker__month {
+  margin: 0.4em 1em;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day {
+  width: 1.9em;
+  line-height: 1.9em;
+  margin: 0.15em;
+  font-weight: 600;
+  color: black;
+}
+
+.dark .react-datepicker__day-name,
+.dark .react-datepicker__day {
+  color: white;
+}
+
+.react-datepicker__day {
+  font-weight: 600;
+}
+
+.react-datepicker__day:hover {
+  color: black !important;
+  background-color: rgb(222, 222, 222);
+}
+
+.dark .react-datepicker__day:hover {
+  color: white !important;
+  background-color: rgb(85, 85, 85);
+}
+
+.react-datepicker__day--selected {
+  color: white !important;
+  background-color: rgb(37, 99, 235);
+}
+
+.dark .react-datepicker__day--selected {
+  color: white !important;
+  background-color: rgb(129, 66, 255);
+}
+
+.react-datepicker__day--today {
+  border-radius: 4px;
+  font-weight: bold;
+  font-weight: 800;
+  outline: 3px solid rgb(37, 99, 235);
+  color: rgb(37, 99, 235);
+}
+
+.dark .react-datepicker__day--today {
+  outline: 3px solid rgb(129, 66, 255);
+  color: rgb(129, 66, 255);
+}
+
+.react-datepicker__day--keyboard-selected {
+  color: rgb(27, 36, 51) !important;
+}
+
+.react-datepicker__day--outside-month {
+  opacity: 0.4;
+}
+
+.react-datepicker__day--weekend {
+  color: red;
+}
+
+.dark .react-datepicker__day--weekend {
+  color: rgb(255, 87, 84);
+}
+
+.react-datepicker__input-container > input {
+  height: calc(12px + 0.3vw);
+  width: calc(100px + 0.5vw);
+  margin-left: 2px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.react-datepicker__input-container > input:focus {
+  outline: none;
+}
+
+.react-datepicker__today-button {
+  background: transparent;
+  font-size: 16px;
+  letter-spacing: 1px;
+  border: 0;
+  padding: 10px 0;
+  border-radius: 0 0 5px 5px;
+  color: white;
+  background-color: rgb(37, 99, 235);
+}
+
+.dark .react-datepicker__today-button {
+  color: white;
+  background-color: rgb(108, 34, 255);
+}
+
+.EditTodoForm {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  row-gap: 20px;
+  width: 98%;
+  padding: 20px;
+  z-index: 2;
+  animation: reveal 0.2s 1;
+}
+
+@keyframes reveal {
+  from {
+    transform: scaleY(0.4);
+    transform-origin: center top 0;
+  }
+  to {
+    transform: scaleY(1);
+    transform-origin: center top 0;
+  }
+}
+
+.EditTodoFormOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.EditTodoForm input {
+  width: 100%;
+  height: 36px;
+  text-align: start;
+  padding: 0 10px;
+  background: white;
+  margin: auto;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.EditTodoForm input:focus {
+  outline: none;
+}
+
+.UpdateTask {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 18px;
+  right: 0;
+  margin-right: 20px;
+  max-width: 120px;
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  border-width: 3px;
+}
+
+.EditTodoForm input:focus {
+  outline: none;
+}
+
+.TodoItem {
+  display: flex;
+  position: relative;
+  width: 96%;
+  max-height: 50px;
+  height: calc(38px + 1vw);
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 500;
+  padding: 2px 2px 2px 8px;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.TodoDarkFlash {
+  animation: dark-flash 0.4s 1;
+}
+
+@keyframes dark-flash {
+  0% {
+    background-color: rgb(55, 55, 55);
+  }
+  50% {
+    background-color: gray;
+  }
+  100% {
+    background-color: rgb(55, 55, 55);
+  }
+}
+
+.TodoLightFlash {
+  animation: light-flash 0.5s 1;
+}
+
+@keyframes light-flash {
+  0% {
+    background-color: rgb(235, 235, 235);
+  }
+  50% {
+    background-color: silver;
+  }
+  100% {
+    background-color: rgb(235, 235, 235);
+  }
+}
+
+.checkbox {
+  margin-left: 10px;
+  margin-right: 14px;
+  margin-top: auto;
+  margin-bottom: auto;
+  scale: 140%;
+  accent-color: springgreen;
+  cursor: pointer;
+}
+
+.TodoActive,
+.TodoDone {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: calc(10px + 0.5vw);
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.TodoDateDone,
+.TodoDateActive {
+  font-size: calc(8px + 0.4vw);
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-right: calc(16px + 0.1vw);
+  margin-left: 10px;
+}
+
+.TodoIconsDone,
+.TodoIconsActive {
+  display: flex;
+  max-width: calc(40px + 1vw);
+  /* background-color: aquamarine; */
+  height: 100%;
+  column-gap: calc(10px + 0.5vw);
+  margin-right: 6px;
+}
+
+.deleteIcon,
+.editIcon {
+  width: 100%;
+  cursor: pointer;
+}
+
+.deleteIcon:hover,
+.editIcon:hover {
+  color: rgb(255, 52, 160);
+}
+
+.TodoActive::-webkit-scrollbar,
+.TodoDone::-webkit-scrollbar {
+  height: 0;
+}
+
+.disable-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.TodoDone {
+  text-decoration: line-through;
+}
+
+/* popup library settings */
+.popup-content {
+  max-width: 500px;
+  width: 94%;
+  padding: 20px 0;
+  border: none;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.dark-popup-content {
+  background-color: rgb(35, 35, 35);
+}
+
+.light-popup-content {
+  color: black;
+  background-color: white;
+}
+
+.popup-content {
+  -webkit-animation: anvil 0.2s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+  animation: anvil 0.2s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+}
+
+@keyframes anvil {
+  0% {
+    transform: scale(1) translateY(0px);
+    opacity: 0;
+    box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+  }
+  1% {
+    transform: scale(0.96) translateY(10px);
+    opacity: 0;
+    box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+  }
+  100% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+    box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+  }
+}
+
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+  /* background-color: rgb(55, 55, 55); */
+}
+
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  right: -8px;
+  top: -12px;
+  width: 26px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* theme switch styling */
+.switch {
+  position: relative;
+  display: block;
+  width: 60px;
+  height: 32px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(194, 194, 194);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.slider.dark {
+  background-color: rgb(194, 194, 194);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 5px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.slider.dark:before {
+  background-color: black;
+  width: 25px;
+  width: 25px;
+  left: 5.5px;
+  bottom: 4px;
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+@keyframes fade-in-dark {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.AnimateFadeInDark {
+  animation: fade-in-dark 0.3s ease-in-out;
+}
+
+@keyframes fade-in-light {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.AnimateFadeInLight {
+  animation: fade-in-light 0.3s ease-in-out;
+}
+
+.RedirectBtn {
+  animation: tilt-shaking 0.2s infinite;
+}
+
+@keyframes tilt-shaking {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0eg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.EmptyFilterWarningCard {
+  position: fixed;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+  bottom: 0;
+  margin-bottom: 40px;
+  right: 0;
+  margin-right: 40px;
+  padding: 14px 16px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-left: 6px solid;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+@media screen and (max-width: 680px) {
+  .TodoAppHeader {
+    display: flex;
+    align-items: center;
+    height: calc(50px + 2vh);
+    width: 100%;
+    font-size: calc(16px + 2vw);
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 0 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+
+  .TodoWrapper {
+    display: grid;
+    margin: auto;
+    row-gap: 10px;
+    margin-top: 10px;
+    max-width: 1100px;
+    width: 100%;
+    max-height: calc(100dvh - 82px);
+    height: 100%;
+    padding: 0 6px;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 4.5fr 0.9fr;
+    grid-template-areas:
+      "CurrentDate"
+      "ListWrapper"
+      "SideBar";
+  }
+
+  .CurrentDate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(12px + 2vw);
+    font-weight: 700;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  }
+
+  .SideBar {
+    grid-area: SideBar;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 12px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    padding: 0 4px;
+  }
+
+  .FilterTask {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0 auto;
+    column-gap: 0;
+  }
+
+  .FilterAllContainer,
+  .FilterTodayContainer,
+  .FilterWeekContainer,
+  .FilterMonthContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .FilterTask button.activenum {
+    transition-duration: 200ms;
+    border-radius: 8px;
+  }
+
+  .FilterTask button.inactivenum {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  button.AllFilter,
+  button.TodayFilter,
+  button.WeekFilter,
+  button.MonthFilter {
+    font-size: calc(9px + 1vw);
+    border-radius: 6px;
+    max-width: 80px;
+    max-height: 70px;
+    width: calc(64px + 1vw);
+    height: calc(46px + 1vw);
+    padding: 2px;
+    font-weight: 700;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    margin: 0 4px;
+    letter-spacing: 1px;
+  }
+
+  .AllFilterCount,
+  .TodayFilterCount,
+  .WeekFilterCount,
+  .MonthFilterCount {
+    display: none;
+  }
+
+  .SortTaskDates button,
+  .SortTaskDates button.active {
+    width: calc(38px + 1vw);
+    height: calc(38px + 1vw);
+    margin-right: 16px;
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+
+  .AddTodoButton {
+    height: calc(38px + 1vw);
+  }
+
+  .ListWrapper {
+    grid-area: ListWrapper;
+    overflow-x: hidden;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 12px;
+    padding: 16px 6px 10px 2px;
+    width: 100%;
+    height: 100%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  }
+
+  .List {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    padding-right: 4px;
+  }
+
+  .EmptyFilterWarningCard {
+    position: fixed;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+    top: 0;
+    right: 0;
+    height: 120px;
+    padding: 14px 16px;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-left: 6px solid;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .AddTaskBtnText {
+    display: none;
+  }
+
+  .AddIcon {
+    display: inline-block;
+  }
+
+  .AddTodoButton {
+    margin: 0;
+    width: calc(38px + 1vw);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .EmptyPlusIconBtn {
+    display: inline-block;
+    width: 18px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .EmptyAddTaskBtn {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .FilterAllContainer,
+  .FilterWeekContainer,
+  .FilterMonthContainer,
+  .FilterTodayContainer {
+    display: none;
+  }
+
+  .FilterMenu {
+    display: block;
+    position: absolute;
+    left: 5%;
+    z-index: 2;
+  }
+
+  .FilterMenuBtn {
+    display: flex;
+    justify-content: flex-start;
+    column-gap: 6px;
+    padding: 0 4px 0 0;
+    align-items: center;
+    height: calc(38px + 1vw);
+    width: 160px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+
+  .FilterMenuContent {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    width: 160px;
+    bottom: 120%;
+    z-index: 3;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+
+  .FilterMenuContent button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+    height: 44px;
+  }
+}
