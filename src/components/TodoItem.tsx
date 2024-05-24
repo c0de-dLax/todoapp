@@ -164,6 +164,7 @@ const TodoItem: React.FC<TodoProps> = ({
         <input
           className="checkbox"
           type="checkbox"
+          aria-label="Todo Item checkbox"
           checked={task.completed}
           onChange={() => toggleComplete(task.id)}
         />
