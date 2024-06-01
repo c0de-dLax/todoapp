@@ -422,7 +422,7 @@ const TodoWrapper: React.FC = () => {
                   <span
                     onMouseEnter={onRedirectBtn}
                     onMouseLeave={offRedirectBtn}
-                    className="disable-select cursor-help text-[18px] text-white font-[600] bg-[rgb(255,1,60)] rounded-[8px] p-3 shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] sm:text-[12px] sm:px-[6px] sm:py-[14px]"
+                    className="disable-select cursor-help text-[18px] text-white font-[600] bg-[rgb(255,1,60)] rounded-[8px] p-3 shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] sm:text-[12px] sm:px-[6px] sm:py-[13px]"
                   >
                     <span className="EmptyAddTaskBtn">ADD TASK</span>
                     <PlusIcon className="EmptyPlusIconBtn" />
