@@ -289,9 +289,7 @@ const TodoWrapper: React.FC = () => {
               }}
             >
               <span className="AddTaskBtnText">ADD TASK</span>
-              <span className="AddTaskBtnIcon">
-                <PlusIcon className="AddIcon" />
-              </span>
+              <PlusIcon className="AddIcon" />
             </button>
           </div>
           <Popup
@@ -398,10 +396,10 @@ const TodoWrapper: React.FC = () => {
                 ""
               )
             ) : todos.length === 0 ? (
-              <div className="flex flex-col gap-y-10 w-full h-full justify-center items-center text-2xl overflow-hidden text-black dark:text-white sm:gap-y-[18px] sm:text-lg">
+              <div className="flex flex-col gap-y-10 w-full h-full justify-center items-center overflow-hidden text-2xl text-black dark:text-white sm:gap-y-[18px] sm:text-lg">
                 <span>Woooow, so empty....</span>
                 {theme === "light" ? (
-                  <div className="disable-select max-w-[300px] w-full h-auto ml-[95px] mt-[-10px] sm:max-w-[140px] sm:ml-[55px]">
+                  <div className="disable-select max-w-[300px] w-full h-auto ml-[95px] mt-[-10px] vertical:max-w-[240px] sm:w-[140px] sm:ml-[55px]">
                     <img
                       alt="Light Empty List"
                       src="images/LightEmptyList.webp"
@@ -410,7 +408,7 @@ const TodoWrapper: React.FC = () => {
                     />
                   </div>
                 ) : (
-                  <div className="disable-select max-w-[300px] w-full h-auto ml-[95px] mt-[-10px] sm:max-w-[140px] sm:ml-[55px]">
+                  <div className="disable-select max-w-[300px] w-full h-auto ml-[95px] mt-[-10px] vertical:max-w-[240px] sm:w-[140px] sm:ml-[55px]">
                     <img
                       alt="Dark Empty List"
                       src="images/DarkEmptyList.webp"
@@ -424,10 +422,10 @@ const TodoWrapper: React.FC = () => {
                   <span
                     onMouseEnter={onRedirectBtn}
                     onMouseLeave={offRedirectBtn}
-                    className="disable-select cursor-help text-[18px] text-white font-[600] bg-[rgb(255,1,60)] rounded-[6px] p-3 shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] sm:text-[12px] sm:p-2"
+                    className="disable-select cursor-help text-[18px] text-white font-[600] bg-[rgb(255,1,60)] rounded-[8px] p-3 shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] sm:text-[12px] sm:px-[6px] sm:py-[13px]"
                   >
                     <span className="EmptyAddTaskBtn">ADD TASK</span>
-                    <PlusIcon className="EmptyPlusIconBtn"/>
+                    <PlusIcon className="EmptyPlusIconBtn" />
                   </span>{" "}
                   button now to fill your list!
                 </span>

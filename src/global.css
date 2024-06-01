@@ -236,8 +236,6 @@ ul {
   border-radius: 10px;
 }
 
-/* rgb(140,82,255) */
-
 .TodoForm {
   display: flex;
   flex-direction: column;
@@ -496,10 +494,11 @@ ul {
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-left: 4px;
   row-gap: 20px;
   width: 98%;
   padding: 20px;
-  z-index: 2;
+  z-index: 3;
   animation: reveal 0.2s 1;
 }
 
@@ -521,7 +520,7 @@ ul {
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 2;
 }
 
 .EditTodoForm input {
@@ -557,6 +556,29 @@ ul {
   letter-spacing: 1px;
   border-radius: 4px;
   border-width: 3px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.UpdateTaskIcon {
+  display: none;
+}
+
+@media screen and (max-width: 360px) {
+  .UpdateTask {
+    max-width: 50px;
+  }
+
+  .UpdateTaskText {
+    display: none;
+  }
+
+  .UpdateTaskIcon {
+    display: inline-block;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .EditTodoForm input:focus {
@@ -643,7 +665,6 @@ ul {
 .TodoIconsActive {
   display: flex;
   max-width: calc(40px + 1vw);
-  /* background-color: aquamarine; */
   height: 100%;
   column-gap: calc(10px + 0.5vw);
   margin-right: 6px;
@@ -1062,9 +1083,8 @@ ul {
 @media screen and (max-width: 480px) {
   .EmptyPlusIconBtn {
     display: inline-block;
-    width: 18px;
-    margin: 0;
-    padding: 0;
+    width: 30px;
+    margin: -3px 0 0 0 ;
   }
 
   .EmptyAddTaskBtn {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Dispatch, SetStateAction } from "react";
 import TodoDate from "./TodoDate";
+import { ArrowPathIcon } from "@heroicons/react/24/solid";
 
 export interface EditTodoFormProps {
   task: {
@@ -78,7 +79,7 @@ const EditTodoForm: React.FC<EditTodoFormProps> = ({
           year: "numeric",
         }),
         `${priorityLevel === "" ? task.priorityLevel : priorityLevel}`,
-        (task.isEditOpened = true),
+        (task.isEditOpened = true)
       );
     }
 
@@ -117,52 +118,52 @@ const EditTodoForm: React.FC<EditTodoFormProps> = ({
         </div>
         <div className="flex items-center justify-start gap-x-2">
           <div className="text-black dark:text-white">Select Date: </div>
-          <TodoDate
-            startDate={startDate}
-            setStartDate={setStartDate}
-          />
+          <TodoDate startDate={startDate} setStartDate={setStartDate} />
         </div>
-        <div className="flex items-center justify-center w-full max-w-[340px]">
-          <div className="text-black dark:text-white">Priority</div>
-          <button
-            type="button"
-            onClick={selectedIsLow}
-            className={`LowBtn border-2 rounded border-green-600 hover:bg-green-600 hover:text-black transition duration 200 ease-in-out ${
-              editPriorityLevel === "Low"
-                ? "bg-green-600 text-black"
-                : "text-green-600"
-            }`}
-          >
-            Low
-          </button>
-          <button
-            type="button"
-            onClick={selectedIsMedium}
-            className={`MediumBtn border-2 rounded border-yellow-500 hover:bg-yellow-500 hover:text-black transition duration 200 ease-in-out ${
-              editPriorityLevel === "Medium"
-                ? "bg-yellow-500 text-black"
-                : "text-yellow-500"
-            }`}
-          >
-            Medium
-          </button>
-          <button
-            type="button"
-            onClick={selectedIsHigh}
-            className={`HighBtn border-2 rounded border-red-500 hover:bg-red-500 hover:text-black transition duration 200 ease-in-out ${
-              editPriorityLevel === "High"
-                ? "bg-red-500 text-black"
-                : "text-red-500"
-            }`}
-          >
-            High
-          </button>
+        <div className="flex flex-row items-start justify-start w-full max-w-[340px]">
+          <div className="text-black dark:text-white">Priority:</div>
+          <div className="flex w-full max-w-[340px] bp-860px:flex-col bp-860px:items-start bp-860px:max-w-[82px] bp-860px:ml-2 bp-860px:gap-y-2">
+            <button
+              type="button"
+              onClick={selectedIsLow}
+              className={`LowBtn border-2 rounded border-green-600 hover:bg-green-600 hover:text-black transition duration 200 ease-in-out ${
+                editPriorityLevel === "Low"
+                  ? "bg-green-600 text-black"
+                  : "text-green-600"
+              }`}
+            >
+              Low
+            </button>
+            <button
+              type="button"
+              onClick={selectedIsMedium}
+              className={`MediumBtn border-2 rounded border-yellow-500 hover:bg-yellow-500 hover:text-black transition duration 200 ease-in-out ${
+                editPriorityLevel === "Medium"
+                  ? "bg-yellow-500 text-black"
+                  : "text-yellow-500"
+              }`}
+            >
+              Medium
+            </button>
+            <button
+              type="button"
+              onClick={selectedIsHigh}
+              className={`HighBtn border-2 rounded border-red-500 hover:bg-red-500 hover:text-black transition duration 200 ease-in-out ${
+                editPriorityLevel === "High"
+                  ? "bg-red-500 text-black"
+                  : "text-red-500"
+              }`}
+            >
+              High
+            </button>
+          </div>
         </div>
         <button
           type="submit"
           className="UpdateTask border-blue-600 bg-blue-600 text-white dark:border-fuchsia-400 dark:bg-fuchsia-400 dark:text-[rgb(55,55,55)] transition duration 200 ease-in-out"
         >
-          Update
+          <span className="UpdateTaskText">Update</span>
+          <ArrowPathIcon className="UpdateTaskIcon"/>
         </button>
       </form>
     </section>

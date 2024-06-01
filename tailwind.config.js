@@ -11,7 +11,7 @@ module.exports = {
         'xs': {'max': '440px'},
         'sm': {'max': '480px'},
         'vertical': {'max': '680px'},
-        // 'notOnMobile': {'min': '481px'},
+        'bp-860px': {'max': '860px'},
       }
     },
   },
