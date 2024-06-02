@@ -135,10 +135,6 @@ const TodoItem: React.FC<TodoProps> = ({
     }
   };
 
-  // ${
-  //   theme === "light" && !isSorted ? "TodoLightFlash" : ""
-  // } ${theme !== "light" && !isSorted ? "TodoDarkFlash" : ""}
-
   if (showTodo()) {
     return (
       <section

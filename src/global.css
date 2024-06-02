@@ -873,25 +873,6 @@ ul {
   }
 }
 
-.EmptyFilterWarningCard {
-  position: fixed;
-  z-index: 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  column-gap: 10px;
-  bottom: 0;
-  margin-bottom: 40px;
-  right: 0;
-  margin-right: 40px;
-  padding: 14px 16px;
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  border-left: 6px solid;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-}
-
 @media screen and (max-width: 680px) {
   .TodoAppHeader {
     display: flex;
@@ -1044,24 +1025,6 @@ ul {
     overflow-y: auto;
     scrollbar-gutter: stable;
     padding-right: 4px;
-  }
-
-  .EmptyFilterWarningCard {
-    position: fixed;
-    z-index: 3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 10px;
-    top: 0;
-    right: 0;
-    height: 120px;
-    padding: 14px 16px;
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    border-left: 6px solid;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   }
 }
 
